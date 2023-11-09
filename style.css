@@ -1,0 +1,93 @@
+:root {
+    --block-light-color: rgb(44, 44, 44);
+    --block-dark-color: rgb(28, 28, 28);
+    --block-normal-highlight: lightskyblue;
+    --block-light-highlight: rgb(156, 215, 252);
+    --block-dark-highlight: rgb(107, 198, 255);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: darkslategray;
+}
+
+ul {
+    position: relative;
+    transform: skewY(-15deg);
+}
+
+ul li {
+    position: relative;
+    list-style: none;
+    width: 200px;
+    background: var(--block-light-color);
+    padding: 15px;
+    z-index: var(--i);
+    transition: 0.5s;
+}
+
+ul li:hover {
+    background: var(--block-light-highlight);
+    transform: translateX(-50px);
+}
+
+ul li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -40px;
+    width: 40px;
+    height: 100%;
+    background: var(--block-dark-color);
+    transform-origin: right;
+    transform: skewY(45deg);
+    transition: 0.5s;
+}
+
+ul li:hover::before {
+    background: var(--block-dark-highlight);
+}
+
+ul li::after {
+   content: '';
+   position: absolute;
+   top: -40px;
+   left: 0;
+   width: 100%;
+   height: 40px;
+   background: var(--block-dark-color);
+   transform-origin: bottom;
+   transform: skewX(45deg);
+   transition: 0.5s;
+}
+
+ul li:hover::after {
+    background: var(--block-normal-highlight);
+}
+
+ul li a {
+    text-decoration: none;
+    color: gray;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+ul li:hover a {
+    color: rgb(240, 240, 240);
+}
+
+ul li:last-child::after {
+    box-shadow: -120px 120px 20px rgba(0, 0, 0, 0.25);
+}
